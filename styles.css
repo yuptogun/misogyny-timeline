@@ -1,0 +1,543 @@
+@charset "UTF-8";
+
+
+html {
+	font-size: 16px; /* 1rem = this size. */
+	font-family: 'Noto Sans KR', sans-serif;
+	line-height: 1.5;
+	font-style: normal;
+
+}
+
+@media all and (max-device-width:800px) {
+	html {
+		font-size: 2vh; /* 1rem = this size. */
+	}
+}
+
+body {
+	display: flex;
+	width: auto;
+
+	height: 100%;
+	background-color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	overflow-y: hidden;
+}
+
+img, img a {
+	border: none;
+}
+
+
+#navblocker {
+  position: absolute;
+
+  background-color: #ffffff;
+	width: 100vmin; /* width must be equal to #titlecard's outerwidth. */
+  height: 100%; /* not 100vh or 100%: avoid vertical scroll. Actually, in position: relative state, 'height' is 0. */
+	top: 0px;
+  z-index: 99;
+}
+
+    #titlecard {
+			position: absolute;
+    	width: 70vmin;
+    	margin-left: 15vmin;
+			margin-right: 15vmin;
+    }
+
+		#navblocker p {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+
+				#credit {
+					position: absolute;
+					left: 16vmin; /* left must be equal to #titlecard's margin-left. +1vmin */
+		/*			bottom: 23vh;  this actually is defined in cssChange.js. */
+
+					font-size: 2vmin;
+					text-align: left;
+					font-weight: 300;
+					color: #000000;
+		    }
+
+		    #intro_scroll {
+					position: absolute;
+					right: 15vmin; /* right must be equal to margin-right of #titlecard. */
+					bottom: 22vmin;  /* bottom must be equal to margin-bottom of .dots. */
+					width: 45vmin;
+					padding-bottom: 0.55vmin; /* padding-bottom must be equal to (#timelineDot's height - #intro_scroll's height)/2 */
+
+					font-size: 3vmin;
+					text-align: right;
+					font-weight: 700;
+					color: #000000;
+		    }
+
+
+#timeline {
+  position:absolute;
+	left: 100vmin; /* left must be equal to #navblocker's width.  */
+	top: 0px;
+	background-color: #ffffff;
+
+	display: flex;
+	flex-direction: row;
+
+	height: 100%; /* not 100vh or 100%: avoid vertical scroll. */
+	width: auto;
+}
+
+		section {
+			display: flex;
+			flex-direction: row;
+			position:relative;
+			padding-right: 8rem;
+		}
+
+					article p {
+						/* Chrome, Safari, Opera prefix */
+						-webkit-column-width: 15rem;
+						-webkit-column-gap: 1rem;
+						/* Mozilla Firefox prefix */
+						-moz-column-width: 15rem;
+						-moz-column-gap: 1rem;
+						/* others */
+						column-width: 15rem;
+						column-gap: 1rem;
+
+						text-align: justify;
+						text-align-last: left;
+						margin-top: 0rem;
+						margin-bottom: 1rem;
+						z-index: 1;
+						flex-shrink: 0;
+
+						font-size:.9rem;
+						font-weight: 400;
+						color:#323232;
+					}
+
+					#Intro, #Outro {
+						margin-right: 30vw;
+					}
+								.essay_intro {
+									margin-right: 5rem;
+
+									position:relative;
+									width: 66rem;
+								}
+
+								.tag_intro {
+									position:relative;
+									width: 15.6rem;
+								}
+
+										.hashtag_line {
+/*											margin: 0px 0px 0px -2rem; /* margin-left must be equal to (-)padding-left of '.tag_intro' */
+/*											padding-left: 2rem; /* margin-left must be equal to padding-left of '.tag_intro' */
+											display: flex;
+											flex-direction: row;
+										}
+
+								.essay_outro {
+									margin-right: 10rem;
+
+									position:relative;
+									width: 32rem;
+								}
+
+								.essay_intro p, .tag_intro p, .essay_outro p {
+									/* Chrome, Safari, Opera prefix */
+									-webkit-column-gap: 2rem;
+									/* Mozilla Firefox prefix */
+									-moz-column-gap: 2rem;
+									/* others */
+									column-gap: 2rem;
+								}
+
+								#Outro #timelineDot {
+									visibility: hidden;
+								}
+
+					div.sectionhead {
+						width: 8rem;
+						height: 27.6vmin;  /* width must be equal to .dots's margin-bottom + #timelineDot's height. */
+
+						display: flex;
+						align-self: flex-end;
+						flex-direction: row-reverse;
+					}
+							sectionhead {
+								text-align: right;
+								/*z-index: 1;*/
+								flex-shrink: 0;
+
+								font-weight: 700;
+								font-size: 8rem;
+/*								margin-top: 0px;
+								margin-bottom: 0px;
+*/				      	color:#f5f5f5;
+
+								transform: translateX(2rem) rotate(90deg);
+								transform-origin: top right;
+								text-decoration:none;
+							}
+
+					article {
+						display: flex;
+						/*align-items: stretch;*/
+						flex-direction: column;
+						justify-content: flex-end;
+
+/*						margin-left: 0rem;
+						margin-right: 0rem;
+*/						padding-left: 2rem;
+						padding-right: 2rem;
+
+						flex-shrink: 0;
+						z-index: 1;
+					}
+
+					.background {
+						list-style-type: none;
+						position: absolute;
+						left: 0px;
+						top: 0px;
+						width: 100%;
+						height: 100%;
+						margin: 0px 0px 0px 0px;
+						padding: 0px 0px 0px 0px;
+						z-index: -1;
+						flex-shrink: 0;
+					}
+								.background li {
+									position: absolute;
+									width: 1px;
+									height: 1px;
+									top: 0px;
+									left: 0px;
+
+									transform-origin: top left;
+									transition-property: transform;
+									transition-duration: 0.55s;
+									transition-delay: 0s;
+									transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
+								}
+
+
+		      .essay_1 {
+		      	position:relative;
+						width: 15rem;
+		      }
+
+					.essay_2 {
+		      	position:relative;
+						width: 31rem;
+		      }
+
+					.essay_3 {
+		      	position:relative;
+						width: 47rem;
+		      }
+
+					.essay_4 {
+		      	position:relative;
+						width: 64rem;
+		      }
+
+		      h1 {
+						width: 15rem;
+						text-align: left;
+						/*z-index: 1;*/
+						flex-shrink: 0;
+
+						font-weight: 700;
+						font-size: 1.5rem;
+						margin-top: 0px;
+						margin-bottom: 0.8rem;
+		      	color:#000000;
+		      	text-decoration:none;
+		      }
+
+					quote {
+						font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif;
+						font-size: 0.85rem;
+						font-weight: 300;
+					}
+
+					dateTime {
+						text-align: left;
+/*						margin-top: 0rem;
+*/						margin-bottom: 1.5rem;
+						width: 15rem;
+						/*z-index: 1;*/
+						flex-shrink: 0;
+
+						font-weight: 500;
+						font-size: 1.2rem;
+		      	color:#000000;
+		      	text-decoration:none;
+					}
+
+					.dots {
+						width: 15rem;
+						height: 5.6vmin;
+/*						margin-top: 0px;
+*/						margin-bottom: 22vmin;
+
+						position: relative;
+						z-index: 1;
+					}
+
+								#timelineDot {
+									position: absolute;
+/*									left: 0px;
+									bottom: 0px;
+*/									height: 5.6vmin;
+									width: 5.6vmin;
+									overflow: visible;
+									background-color: transparent;
+								}
+
+								#timelineDot svg {
+								  position: absolute;
+									overflow: visible;
+/*								  top: 0;
+								  left: 0;
+*/								}
+
+								#timelineDot svg circle {
+									fill: #31454e;
+									/* cx, cy and r are defined in dataParsing.js. */
+								}
+
+								.prevjump, .nextjump {
+									position: absolute;
+/*									bottom: 0px;
+*/									width: 5.6vmin;
+									height: 5.6vmin;
+									/*z-index: 3;*/
+
+									transform-origin: center;
+									transform: scale(0, 0);
+									transition-property: transform;
+		              transition-duration: 0.55s;
+		              transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
+								}
+								.prevjump.tagSelected, .nextjump.tagSelected {
+									transform: scale(1, 1);
+									transition-property: transform;
+		              transition-duration: 0.55s;
+		              transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
+								}
+								.prevjump {
+									right: 8vmin;
+								}
+								.nextjump {
+									right: 0px;
+								}
+
+								.prevjump img, .nextjump img {
+									position: absolute;
+/*									top: 0px;
+									left: 0px;
+*/									height: 5.6vmin;
+									width: 5.6vmin;
+
+									opacity: 1.0;
+									transition-property: opacity;
+		              transition-duration: 0.55s;
+		              transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); /* == 'easeOutQuart'. https://easings.net/ko#easeInOutExpo */
+								}
+								.prevjump.tagSelected img, .nextjump.tagSelected img {
+									opacity: 0.5;
+									transition-property: opacity;
+		              transition-duration: 0s;
+		              transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
+								}
+								.prevjump img:hover, .nextjump img:hover {
+									opacity: 1.0;
+									transition-duration: 0s;
+								}
+								@media all and (max-device-width:800px) {
+									.prevjump img:hover, .nextjump img:hover {
+										opacity: 0.5;
+										transition-duration: 0s;
+									}
+								}
+
+								#arrowDot {
+									position: absolute;
+									top: 0.1vmin; /* top & left must be equal to half of width difference between .prevjump's img & #arrowDot. */
+									left: 0.1vmin;
+									height: 5.4vmin;
+									width: 5.4vmin;
+
+									opacity: 1.0;
+									transition-property: fill;
+		              transition-duration: 0.55s;
+		              transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); /* == 'easeOutExpo'. https://easings.net/ko#easeInOutExpo */
+								}
+								#arrowDot svg{
+									height: 100%;
+									width: 100%;
+								}
+
+
+
+
+		#timelineHorizontalLine {
+			position: absolute;
+		/*		left: 0px; this actually is defined in cssChange.js. */
+			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (#timelineDot's outerHeight)/2. */
+			/*z-index: 0;*/
+			flex-shrink: 0;
+
+			height: 1.4vmin;
+			margin-bottom: -0.7vmin; /* margin-bottom must be equal to (-)height */
+		/*		width: 20000px;  this actually is defined in cssChange.js. */
+			background-color: #31454e;
+		}
+
+		.horizontalLine {
+			position: absolute;
+			left: 0px; /* this actually is defined in cssChange.js. */
+			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (#timelineDot's outerHeight)/2. */
+			flex-shrink: 0;
+
+			height: 1.4vmin;
+			margin-bottom: -0.7vmin; /* margin-bottom must be equal to (-)height */
+			width: 110%;
+			/*z-index: 0;*/
+			background-color: #31454e;
+		}
+
+
+		.nav {
+			position: fixed;
+			bottom: 0%;
+			left: 10%; /* left must be half of (100% - width); to be on center. This actually is defined in scroll.js, based on scroll event. */
+			transform: translate3d(0,0,0); /* this makes .nav always visible. */
+
+			padding: 0px 0px 0px 0px;
+			margin: 0px 0px 0px 0px;
+			width: 80%;
+			height: 6%;
+
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
+			list-style-type: none;
+
+			z-index: 100;
+			background-color: transparent;
+		}
+/*					.nav li {
+						display: inline-block;
+						margin-right: 0rem;
+					}
+*/
+					.nav li a.timeJump {
+						display: inline-block;
+						width: 2rem;
+
+						font-size: 0.9rem;
+						font-weight: 400;
+						color:#323232;
+
+						transform: translateY(-3rem) rotate(60deg);
+						transform-origin: bottom left;
+						text-align: center;
+						text-decoration: none;
+						opacity: 0.7;
+					}
+
+					.nav li a.timeJump:hover {
+						opacity: 1.0;
+					}
+
+
+/* .nav will be covered behind the #navblocker on mobile portrait devices. */
+@media all and (max-device-width:800px) and (orientation:portrait){
+	.nav {
+		z-index: 4;
+	}
+}
+
+
+
+
+hashtag {
+	position: relative;
+	bottom: 0.8rem;
+	padding-left: 0.3rem;
+	margin-bottom: 0.6rem;
+	margin-right: 1rem;
+	/*z-index: 1;*/
+
+	height: 1.5rem;
+	width: 7rem;
+	flex-shrink: 0;
+}
+
+			hashtag text {
+				position: absolute;
+				padding-top: 0.1rem;
+
+				font-weight: 500;
+				font-size: 0.8rem;
+				color: #000000;
+			}
+
+#authority {
+	background-color: #ffcccc;
+}
+#japan {
+	background-color: #ff9999;
+}
+#rape {
+	background-color: #ff9933;
+}
+#crime {
+	background-color: #ffcc33;
+}
+#law {
+	background-color: #ffff99;
+}
+#policy {
+	background-color: #cccc99;
+}
+#politics {
+	background-color: #99cc66;
+}
+#party {
+	background-color: #66cc99;
+}
+#labour {
+	background-color: #99ff99;
+}
+#movement {
+	background-color: #99cccc;
+}
+#media {
+	background-color: #66cccc;
+}
+#online {
+	background-color: #66ccff;
+}
+#speech {
+	background-color: #99ccff;
+}
+#culture {
+	background-color: #9999ff;
+}
+#lovers {
+	background-color: #cc99ff;
+}
+#abortion {
+	background-color: #ff99ff;
+}
