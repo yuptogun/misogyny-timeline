@@ -288,6 +288,7 @@ img, img a {
 						height: 5.6vmin;
 /*						margin-top: 0px;
 */						margin-bottom: 22vmin;
+						flex-shrink: 0;
 
 						position: relative;
 						z-index: 1;
