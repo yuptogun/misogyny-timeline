@@ -46,7 +46,7 @@ var jumpPrev = '<img src="assets/img/jumpPrev.svg">';
 var jumpNext = '<img src="assets/img/jumpNext.svg">';
 
 var html = '';
-var hashtagID = '';
+var hashtagClass = '';
 
 
 var data = $.getJSON(dataURL, function(d) {
@@ -62,26 +62,26 @@ var data = $.getJSON(dataURL, function(d) {
 						tag.push(new Array(0));
 					});
 
-					html += '<div class="sectionhead"><sectionhead>' + section.sectionName + '.</sectionhead></div>\n';
+					html += '<div class="sectionhead">\n<sectionhead>' + section.sectionName + '.</sectionhead>\n<div class="horizontalLine"></div></div>\n';
 					$.each(section.articles, function(articleIndex, article) {
 						html += '<article class="' + "essay_" + article.columns + '">\n';
 
 							html += '<ul class="background">\n';
-								html += '<li id="none"></li>\n';
-								html += '<li id="none"></li>\n';
+								html += '<li class="none"></li>\n';
+								html += '<li class="none"></li>\n';
 							html += '</ul>\n';
 							if (article.hashtag_1 != "") {
-								hashtagID = hashtag_KtoE[article.hashtag_1];
-								hashtag_position[hashtagID][sectionIndex+1].push(articleIndex);
-								html += '<hashtag id="' + hashtagID + '"><text>'+article.hashtag_1 +'</text></hashtag>\n';
+								hashtagClass = hashtag_KtoE[article.hashtag_1];
+								hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
+								html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_1 +'</text></hashtag>\n';
 								if (article.hashtag_2 != "") {
-									hashtagID = hashtag_KtoE[article.hashtag_2];
-									hashtag_position[hashtagID][sectionIndex+1].push(articleIndex);
-									html += '<hashtag id="' + hashtagID + '"><text>'+article.hashtag_2 +'</text></hashtag>\n';
+									hashtagClass = hashtag_KtoE[article.hashtag_2];
+									hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
+									html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_2 +'</text></hashtag>\n';
 									if (article.hashtag_3 != "") {
-										hashtagID = hashtag_KtoE[article.hashtag_3];
-										hashtag_position[hashtagID][sectionIndex+1].push(articleIndex);
-										html += '<hashtag id="' + hashtagID + '"><text>'+article.hashtag_3 +'</text></hashtag>\n';
+										hashtagClass = hashtag_KtoE[article.hashtag_3];
+										hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
+										html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_3 +'</text></hashtag>\n';
 							}
 						}}
 

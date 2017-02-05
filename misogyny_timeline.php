@@ -28,19 +28,20 @@
 
 <body>
 
-  <div id="navblocker">
+  <header id="navblocker">
     <img id="titlecard" src="assets/img/mainTitle-ko.svg">
-    <p id="credit">글/자료: 조현익, 허자인 <br>웹 디자인: 조현익 <br>개발: 조현익, 김어진</p>
-    <p id="intro_scroll">마우스휠을 돌려 스크롤하세요 →</p>
-  </div>
-
+    <div id="title_text">
+      <p id="credit">기획, 집필, 디자인, 개발: 조현익<br>집필검수: 허자인<br>개발검수: 김어진</p>
+      <p id="intro_scroll">오른쪽으로 이동하려면 →<br>마우스휠을 돌리세요.</p>
+    </div>
+  </header>
 
 
 
   <div id="timeline">
 
     <section id="Intro">
-      <article class="essay_intro">
+      <article id="essay_intro">
         <p id="intro_essay_bottom">
           2017년 설날이 막 지난 지금, 우리는 아주 전통적인 한국 역사 이야기를 다루려고 한다.
           <br>
@@ -51,13 +52,13 @@
           <br>
           <br>한국 시민들이 2016년에 목격한 찝찝한 일들부터, 백제 개로왕이 백성을 겁탈하려고 했던 일까지. 한국에서 벌어진 뭔가 찝찝한 일들을 주욱 모아보았다. ’여성혐오’라는 단어는 중요하지 않다. 이 페이지의 내용 하나하나를 읽으며 뭔가 찝찝하다면, 그 근원이 무엇인지 한 번 상상해보시라.
         </p>
-        <dateTime id="intro_dateTime">Intro: 2017.</dateTime>
+        <dateTime>Intro: 2017.</dateTime>
         <div class="dots">
           <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
       </article>
 
-      <article class="tag_intro">
+      <article id="tag_intro">
         <ul class="background">
           <li id="none"></li>
           <li id="none"></li>
@@ -118,8 +119,8 @@
     <!--data structure starts from here. more detail in dataParsing.js.-->
 
     <section id="Outro">
-      <div class="sectionhead"><sectionhead>400.</sectionhead></div>
-      <article class="essay_outro">
+      <div class="sectionhead"><sectionhead>400.</sectionhead><div class="horizontalLine"></div></div>
+      <article id="essay_outro">
         <p>
           이 이전의 한국사 기록이 남아있지 않았기에, 우리는 더 알아낼 수 없었다.
           <br> 그 이전의 인류는 어떠했을까? 요컨데, 모든 인류가 수렵과 채집으로 직접 식량을 조달했던 시기라던가, 아니면, 아기가 태어나는 데에 여성 뿐만 아니라 남성도 ‘무언가’ 기여한다는 점을 처음 발견하기 전이라던가.
@@ -131,7 +132,7 @@
         </div>
       </article>
 
-      <article class="TTLPage">
+      <article id="TTLPage">
         <p>
           <a href="" target="_blank">20's Timeline 홈페이지로</a>
           <br><a href="" target="_blank">20's Timeline Facebook</a>
@@ -144,7 +145,6 @@
       </article>
     </section>
 
-    <div id="timelineHorizontalLine"></div>
 </body>
 
 
