@@ -19,7 +19,7 @@ $(document).ready(function(){
 
       var $anchor = $(this);
       $('html, body').stop().animate({
-          scrollLeft: $($anchor.attr('href')).offset().left - $(window).width()/2 + 1
+          scrollLeft: $($anchor.attr('href')).offset().left - $(window).width()/4 + 1
       }, 2500,'easeInOutExpo');
   });
 });
@@ -68,42 +68,6 @@ $(document).ready(function(){
   });
 });
 
-    // handles .nav's position: fixed? of give the same distance with #navblocker?
-/*
-$(document).ready(function() {
-  var $nav = $('#navTime');
-  if (window.pageXOffset <= $('#navblocker').innerWidth()) {
-    $nav.css({
-      position: 'absolute',
-      left: $('#navblocker').innerWidth()+$(window).width()/10
-    });
-  }
-  else {
-    $nav.css({
-      position: 'fixed',
-      left: '10%'
-    });
-  }
-
-  $(window).scroll(function(event){
-    event.preventDefault();
-
-    if (window.pageXOffset <= $('#navblocker').innerWidth()) {
-      $nav.css({
-        position: 'absolute',
-        left: $('#navblocker').innerWidth()+$(window).width()/10
-      });
-    }
-    else {
-      $nav.css({
-        position: 'fixed',
-        left: '10%'
-      });
-    }
-  });
-});
-*/
-
 
 // handles easing to next place of 'chosen hashtag' via < > buttons
 	//get the coordinates of all essay chunks and put them into an array
@@ -130,11 +94,9 @@ $(document).ready(function() {
 $(document).ready(function(){
 
   $('hashtag').each(function(){
-    var tagID = $(this).attr('id');
-/*    var essay = $(this).parent();
-    var articleDist = $(essay).offset().left;
-*/    var articleDist = $(this).offset().left;
-    destinations[tagID].push(articleDist);
+    var tagClass = $(this).attr('class');
+    var articleDist = $(this).offset().left;
+    destinations[tagClass].push(articleDist);
   });
 
   $(window).resize(function(event){
@@ -159,27 +121,25 @@ $(document).ready(function(){
     };
 
     $('hashtag').each(function(){
-      var tagID = $(this).attr('id');
-/*      var essay = $(this).parent();
-      var articleDist = $(essay).offset().left;
-*/      var articleDist = $(this).offset().left;
-      destinations[tagID].push(articleDist);
+      var tagClass = $(this).attr('class');
+      var articleDist = $(this).offset().left;
+      destinations[tagClass].push(articleDist);
     });
   });
 
 
 	//Attach it to the next button
   $('#timeline').on('click', '.dots .nextjump', function(event){
-    var tagID = clickedTagID;
+    var tagClass = clickedTagClass;
     var currentPageXOffset = window.pageXOffset;
     var currentDist = 0;
   	var destinationNext = 0;
 		var cursorDist = event.pageX;
 		//find the next destination
-  	$.each(destinations[tagID], function(index, value){
+  	$.each(destinations[tagClass], function(index, value){
 			if(cursorDist >= value) {
         currentDist = value;
-				destinationNext = destinations[tagID][index + 1];
+				destinationNext = destinations[tagClass][index + 1];
 			} else {
 				return false
 			}
@@ -197,16 +157,16 @@ $(document).ready(function(){
 });
 	//Attach it to the prev button
   $('#timeline').on('click', '.dots .prevjump', function(event){
-    var tagID = clickedTagID;
+    var tagClass = clickedTagClass;
     var currentPageXOffset = window.pageXOffset;
     var currentDist = 0;
     var destinationPrev = 0;
     var cursorDist = event.pageX;
     //find the next destination
-    $.each(destinations[tagID], function(index, value){
+    $.each(destinations[tagClass], function(index, value){
       if(cursorDist >= value) {
         currentDist = value;
-        destinationPrev = destinations[tagID][index - 1];
+        destinationPrev = destinations[tagClass][index - 1];
       } else {
         return false
       }

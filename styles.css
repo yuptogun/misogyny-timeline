@@ -35,28 +35,34 @@ img, img a {
   position: absolute;
 
   background-color: #ffffff;
-	width: 100vmin; /* width must be equal to #titlecard's outerwidth. */
+	width: 70vmin;
   height: 100%; /* not 100vh or 100%: avoid vertical scroll. Actually, in position: relative state, 'height' is 0. */
+	padding-left: 15vmin;
+	padding-right: 15vmin;
 	top: 0px;
   z-index: 99;
 }
 
     #titlecard {
-			position: absolute;
-    	width: 70vmin;
-    	margin-left: 15vmin;
-			margin-right: 15vmin;
+			position: static;
+			margin-bottom: 3.7rem; /* margin-bottom must be equal to ('article p' margin-bottom + 'dateTime' font-size + 'dateTime' margin-bottom) */
     }
 
-		#navblocker p {
-			margin-top: 0px;
+		#title_text {
+			position: relative;
+			height: auto;
+			margin-top: 1.3vmin; /* padding-bottom must be equal to (#timelineDot's height - #intro_scroll's font-size)/2 */
 			margin-bottom: 0px;
 		}
 
 				#credit {
 					position: absolute;
-					left: 16vmin; /* left must be equal to #titlecard's margin-left. +1vmin */
-		/*			bottom: 23vh;  this actually is defined in cssChange.js. */
+					left: 1vmin;
+					top: 0px;
+					width: auto;
+					height: auto;
+					margin-top: 0.25vmin;
+					margin-bottom: 0px;
 
 					font-size: 2vmin;
 					text-align: left;
@@ -66,13 +72,15 @@ img, img a {
 
 		    #intro_scroll {
 					position: absolute;
-					right: 15vmin; /* right must be equal to margin-right of #titlecard. */
-					bottom: 22vmin;  /* bottom must be equal to margin-bottom of .dots. */
-					width: 45vmin;
-					padding-bottom: 0.55vmin; /* padding-bottom must be equal to (#timelineDot's height - #intro_scroll's height)/2 */
+					right: 0px;
+					top: 0px;
+					width: auto;
+					height: auto;
+					margin-top: 0px;
+					margin-bottom: 0px;
 
 					font-size: 3vmin;
-					text-align: right;
+					text-align: left;
 					font-weight: 700;
 					color: #000000;
 		    }
@@ -95,7 +103,6 @@ img, img a {
 			display: flex;
 			flex-direction: row;
 			position:relative;
-			padding-right: 8rem;
 		}
 
 					article p {
@@ -121,17 +128,14 @@ img, img a {
 						color:#323232;
 					}
 
-					#Intro, #Outro {
-						margin-right: 30vw;
-					}
-								.essay_intro {
-									margin-right: 5rem;
-
+								#essay_intro {
+									padding-right: 7rem;
 									position:relative;
 									width: 66rem;
 								}
 
-								.tag_intro {
+								#tag_intro {
+									padding-right: 20vw;
 									position:relative;
 									width: 15.6rem;
 								}
@@ -143,14 +147,19 @@ img, img a {
 											flex-direction: row;
 										}
 
-								.essay_outro {
-									margin-right: 10rem;
-
+								#essay_outro {
+									padding-right: 10rem;
 									position:relative;
 									width: 32rem;
 								}
 
-								.essay_intro p, .tag_intro p, .essay_outro p {
+								#TTLPage {
+									padding-right: 20vw;
+									position:relative;
+									width: 15rem;
+								}
+
+								#essay_intro p, #tag_intro p, #essay_outro p {
 									/* Chrome, Safari, Opera prefix */
 									-webkit-column-gap: 2rem;
 									/* Mozilla Firefox prefix */
@@ -164,27 +173,40 @@ img, img a {
 								}
 
 					div.sectionhead {
-						width: 8rem;
+/*						width: 8rem;
 						height: 27.6vmin;  /* width must be equal to .dots's margin-bottom + #timelineDot's height. */
+						width: 12rem; /* equal to (sectionhead's font-size * line-height) */
+						padding-left: 6rem;
 
 						display: flex;
 						align-self: flex-end;
 						flex-direction: row-reverse;
 					}
 							sectionhead {
-								text-align: right;
 								/*z-index: 1;*/
 								flex-shrink: 0;
+								margin-bottom: 30vmin;
 
 								font-weight: 700;
 								font-size: 8rem;
 /*								margin-top: 0px;
 								margin-bottom: 0px;
 */				      	color:#f5f5f5;
-
+/*
 								transform: translateX(2rem) rotate(90deg);
 								transform-origin: top right;
+								*/
+								/* for Chrome, MS Edge, Sarafi & Opera */
+								-webkit-writing-mode: vertical-rl;
+								/* for MS Internet Explore */
+								-ms-writing-mode: vertical-rl;
+								/* else */
+								writing-mode: vertical-rl;
 								text-decoration:none;
+							}
+
+							div.sectionhead .horizontalLine {
+								width: 19rem; /* div.sectionhead's width + padding-right + 1rem. '100%' does not fit on div.sectionhead: it fits on <section>. */
 							}
 
 					article {
@@ -389,24 +411,9 @@ img, img a {
 								}
 
 
-
-
-		#timelineHorizontalLine {
-			position: absolute;
-		/*		left: 0px; this actually is defined in cssChange.js. */
-			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (#timelineDot's outerHeight)/2. */
-			/*z-index: 0;*/
-			flex-shrink: 0;
-
-			height: 1.4vmin;
-			margin-bottom: -0.7vmin; /* margin-bottom must be equal to (-)height */
-		/*		width: 20000px;  this actually is defined in cssChange.js. */
-			background-color: #31454e;
-		}
-
 		.horizontalLine {
 			position: absolute;
-			left: 0px; /* this actually is defined in cssChange.js. */
+			left: 0px;
 			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (#timelineDot's outerHeight)/2. */
 			flex-shrink: 0;
 
@@ -416,6 +423,11 @@ img, img a {
 			/*z-index: 0;*/
 			background-color: #31454e;
 		}
+
+					#essay_intro .horizontalLine {
+						position: absolute;
+						left: 3rem; /* left must be equal to (padding-left of article)+1rem; */
+					}
 
 
 		.nav {
@@ -463,7 +475,7 @@ img, img a {
 
 
 /* .nav will be covered behind the #navblocker on mobile portrait devices. */
-@media all and (max-device-width:800px) and (orientation:portrait){
+@media all and (orientation: portrait){
 	.nav {
 		z-index: 4;
 	}
@@ -494,51 +506,54 @@ hashtag {
 				color: #000000;
 			}
 
-#authority {
+.none {
+	background-color: transparent;
+}
+.authority {
 	background-color: #ffcccc;
 }
-#japan {
+.japan {
 	background-color: #ff9999;
 }
-#rape {
+.rape {
 	background-color: #ff9933;
 }
-#crime {
+.crime {
 	background-color: #ffcc33;
 }
-#law {
+.law {
 	background-color: #ffff99;
 }
-#policy {
+.policy {
 	background-color: #cccc99;
 }
-#politics {
+.politics {
 	background-color: #99cc66;
 }
-#party {
+.party {
 	background-color: #66cc99;
 }
-#labour {
+.labour {
 	background-color: #99ff99;
 }
-#movement {
+.movement {
 	background-color: #99cccc;
 }
-#media {
+.media {
 	background-color: #66cccc;
 }
-#online {
+.online {
 	background-color: #66ccff;
 }
-#speech {
+.speech {
 	background-color: #99ccff;
 }
-#culture {
+.culture {
 	background-color: #9999ff;
 }
-#lovers {
+.lovers {
 	background-color: #cc99ff;
 }
-#abortion {
+.abortion {
 	background-color: #ff99ff;
 }
