@@ -56,6 +56,7 @@
         <div class="dots">
           <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
+        <div class="horizontalLine"></div>
       </article>
 
       <article id="tag_intro">
@@ -130,6 +131,7 @@
         <div class="dots">
           <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
+        <div class="horizontalLine"></div>
       </article>
 
       <article id="TTLPage">
@@ -142,6 +144,7 @@
         <div class="dots">
           <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
+        <div class="horizontalLine"></div>
       </article>
     </section>
 
