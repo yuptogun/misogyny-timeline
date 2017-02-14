@@ -56,33 +56,30 @@ img, img a {
 		}
 
 				#credit {
-					position: absolute;
-					left: 1vmin;
-					top: 0px;
-					width: auto;
-					height: auto;
-					margin-top: 0.25vmin;
-					margin-bottom: 0px;
-
-					font-size: 2vmin;
-					text-align: left;
-					font-weight: 300;
-					color: #000000;
+			    left: 1vmin;
+			    display: inline-block;
+			    width: auto;
+			    height: auto;
+			    margin-top: 0.25vmin;
+			    margin-bottom: 0px;
+			    font-size: 2vmin;
+			    text-align: left;
+			    font-weight: 300;
+			    color: #000000;
 		    }
 
 		    #intro_scroll {
-					position: absolute;
-					right: 0px;
-					top: 0px;
-					width: auto;
-					height: auto;
-					margin-top: 0px;
-					margin-bottom: 0px;
-
-					font-size: 3vmin;
-					text-align: left;
-					font-weight: 700;
-					color: #000000;
+			    /* position: absolute; */
+			    float: right;
+			    top: 0px;
+			    width: auto;
+			    height: auto;
+			    margin-top: 0px;
+			    margin-bottom: 0px;
+			    font-size: 3vmin;
+			    text-align: left;
+			    font-weight: 700;
+			    color: #000000;
 		    }
 
 

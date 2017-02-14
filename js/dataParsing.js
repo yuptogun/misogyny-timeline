@@ -50,8 +50,8 @@ var dataURL = 'https://rawgit.com/yuptogun/misogyny-timeline/master/data/Misogyn
 
 var timelineDot = '<div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
 var arrowDot = '<div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
-var jumpPrev = '<img src="assets/img/jumpPrev.svg">';
-var jumpNext = '<img src="assets/img/jumpNext.svg">';
+var jumpPrev = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpPrev.svg">';
+var jumpNext = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpNext.svg">';
 
 var html = '';
 var hashtagClass = '';
