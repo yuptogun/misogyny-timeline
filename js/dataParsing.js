@@ -38,7 +38,15 @@ var hashtag_position = {
 	'abortion': [[1]]
 };
 
-var dataURL = 'data/Misogyny_data.json';
+var randomString = function(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+var dataURL = 'https://rawgit.com/yuptogun/misogyny-timeline/master/data/Misogyny_data.json?r='+randomString(32);
 
 var timelineDot = '<div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
 var arrowDot = '<div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
