@@ -125,6 +125,11 @@ img, img a {
 						color:#323232;
 					}
 
+					article p.notice {
+						font-size:.9rem;
+						color:#d01f3e;
+					}
+
 								#essay_intro {
 									padding-right: 7rem;
 									position:relative;
