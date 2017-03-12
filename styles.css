@@ -125,11 +125,6 @@ img, img a {
 						color:#323232;
 					}
 
-					article p.notice {
-						font-size:.9rem;
-						color:#d01f3e;
-					}
-
 								#essay_intro {
 									padding-right: 7rem;
 									position:relative;
@@ -287,10 +282,16 @@ img, img a {
 		      	text-decoration:none;
 		      }
 
-					quote {
+					p quote {
 						font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif;
 						font-size: 0.85rem;
 						font-weight: 300;
+					}
+
+					p notice {
+						font-family: 'Noto Sans KR', sans-serif;
+						font-size: .9rem;
+						color: #d01f3e;
 					}
 
 					dateTime {
