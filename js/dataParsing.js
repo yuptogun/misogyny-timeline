@@ -55,7 +55,7 @@ var randomString = function(length) {
     }
     return text;
 };
-var sectionDataURLArray_fileURL = 'https://rawgit.com/yuptogun/misogyny-timeline/master/data/filename_array.json?r='+randomString(32);
+var sectionDataURLArray_fileURL = 'https://cdn.rawgit.com/yuptogun/misogyny-timeline/f9704250/data/filename_array.json?r='+randomString(32);
 
 
 var urlArray = $.getJSON(sectionDataURLArray_fileURL, function(d) {
