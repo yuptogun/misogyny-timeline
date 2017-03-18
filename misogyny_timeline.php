@@ -147,6 +147,7 @@
         <div class="horizontalLine"></div>
       </article>
     </section>
+  </div>
 
 </body>
 

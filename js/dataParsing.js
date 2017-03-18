@@ -19,6 +19,7 @@ var hashtag_KtoE = {
 	'태아, 임신중절': 'abortion'
 };
 
+//hashtag_position[sectionIndex][articleIndex] = array of hashtags in [sectionIndex, articleIndex]-th article.
 var hashtag_position = {
 	'authority': [[1]],
 	'japan': [[1]],
@@ -38,6 +39,14 @@ var hashtag_position = {
 	'abortion': [[1]]
 };
 
+var timelineDot = '<div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
+var arrowDot = '<div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
+var jumpPrev = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpPrev.svg">';
+var jumpNext = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpNext.svg">';
+
+var navIntro = '<li><a href="#Intro" class="timeJump">Intro</a></li>\n';
+var navOutro = '<li><a href="#Outro" class="timeJump">400.</a></li>\n';
+
 var randomString = function(length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -45,90 +54,120 @@ var randomString = function(length) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
-}
-var dataURL = 'https://rawgit.com/yuptogun/misogyny-timeline/master/data/Misogyny_data.json?r='+randomString(32);
-
-var timelineDot = '<div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
-var arrowDot = '<div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
-var jumpPrev = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpPrev.svg">';
-var jumpNext = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpNext.svg">';
-
-var html = '';
-var hashtagClass = '';
+};
+var sectionDataURLArray_fileURL = 'https://rawgit.com/yuptogun/misogyny-timeline/master/data/filename_array.json?r='+randomString(32);
 
 
-var data = $.getJSON(dataURL, function(d) {
-	console.log("success");
+var urlArray = $.getJSON(sectionDataURLArray_fileURL, function(d) {
+	console.log("data loading success: "+sectionDataURLArray_fileURL)
 		}).fail( function(d, textStatus, error) {
 				console.error("getJSON failed, status: " + textStatus + ", error: " + error);
-		}).done( function(data) {
+		}).done( function(urlArray) {
+				$('#navTime').append(navIntro);
+				getSection_recursive(urlArray, 0);
+		});
 
-				$.each(data, function(sectionIndex, section) {
-					var sectionName_id = section.sectionName.replace(/\u002e/g, "-");
-					html += '<section id="' + sectionName_id + '">\n';
-					$.each(hashtag_position, function(tagIndex, tag) {
-						tag.push(new Array(0));
-					});
 
-					html += '<div class="sectionhead">\n<sectionhead>' + section.sectionName + '.</sectionhead>\n<div class="horizontalLine"></div></div>\n';
-					$.each(section.articles, function(articleIndex, article) {
-						html += '<article class="' + "essay_" + article.columns + '">\n';
+function parsing_a_Hashtag(hashtag, decodedIndex, articleIndex) {
+	var returnHTML = '';
+	var hashtagClass = hashtag_KtoE[hashtag];
+	hashtag_position[hashtagClass][decodedIndex].push(articleIndex);
+	returnHTML += '<hashtag class="' + hashtagClass + '"><text>'+ hashtag +'</text></hashtag>\n';
+	return returnHTML;
+};
+function parsingHashtag_s(article, sectionIndex, articleIndex) {
+	var returnHTML = '';
+	if (article.hashtag_1 != "") {
+		returnHTML += parsing_a_Hashtag(article.hashtag_1, sectionIndex+1, articleIndex);
+		if (article.hashtag_2 != "") {
+			returnHTML += parsing_a_Hashtag(article.hashtag_2, sectionIndex+1, articleIndex);
+			if (article.hashtag_3 != "") {
+				returnHTML += parsing_a_Hashtag(article.hashtag_3, sectionIndex+1, articleIndex);
+	}}}
+	return returnHTML;
+};
 
-							html += '<ul class="background">\n';
-								html += '<li class="none"></li>\n';
-								html += '<li class="none"></li>\n';
-							html += '</ul>\n';
-							if (article.hashtag_1 != "") {
-								hashtagClass = hashtag_KtoE[article.hashtag_1];
-								hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
-								html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_1 +'</text></hashtag>\n';
-								if (article.hashtag_2 != "") {
-									hashtagClass = hashtag_KtoE[article.hashtag_2];
-									hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
-									html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_2 +'</text></hashtag>\n';
-									if (article.hashtag_3 != "") {
-										hashtagClass = hashtag_KtoE[article.hashtag_3];
-										hashtag_position[hashtagClass][sectionIndex+1].push(articleIndex);
-										html += '<hashtag class="' + hashtagClass + '"><text>'+article.hashtag_3 +'</text></hashtag>\n';
-							}
-						}}
+function parsingReference_s(article) {
+	var returnHTML = '';
+	if (article.reference_1 != "") {
+		returnHTML += '<br>\n<a href="' + article.reference_1 + '" target="_blank">출처 1</a> \n';
+		if (article.reference_2 != "") {
+			returnHTML += '<a href="' + article.reference_2 + '" target="_blank">출처 2</a> \n';
+			if (article.reference_3 != "") {
+				returnHTML += '<a href="' + article.reference_3 + '" target="_blank">출처 3</a> \n';
+	}}}
+	return returnHTML;
+};
 
-							html += '<h1>' + article.headText + '</h1>\n';
-							html += '<p>' + article.bodyText + ' ';
-							if (article.reference_1 != "") {
-								html += '<br>\n<a href="' + article.reference_1 + '" target="_blank">출처 1</a> \n';
-								if (article.reference_2 != "") {
-									html += '<a href="' + article.reference_2 + '" target="_blank">출처 2</a> \n';
-									if (article.reference_3 != "") {
-										html += '<a href="' + article.reference_3 + '" target="_blank">출처 3</a> \n';
-							}}}
-							html += '</p>\n';
+function parsing_a_Article(article, sectionIndex, articleIndex) {
+	var returnHTML = '';
+	returnHTML += '<article class="' + "essay_" + article.columns + '">\n';
+		// background
+		returnHTML += '<ul class="background">\n';
+			returnHTML += '<li class="none"></li>\n';
+			returnHTML += '<li class="none"></li>\n';
+		returnHTML += '</ul>\n';
+		// hashtag
+		returnHTML += parsingHashtag_s(article, sectionIndex, articleIndex);
+		// article title
+		returnHTML += '<h1>' + article.headText + '</h1>\n';
+		// article main text + references
+		returnHTML += '<p>' + article.bodyText + ' ' + parsingReference_s(article) + '</p>\n';
+		// time date
+		returnHTML += '<dateTime>' + article.timelineDate + '</dateTime>\n';
+		// timeline dot
+		returnHTML += '<div class="dots">\n';
+			returnHTML += timelineDot + '\n';
+			returnHTML += '<div class="prevjump">'+arrowDot+jumpPrev+'</div> <div class="nextjump">'+arrowDot+jumpNext+'</div>\n'
+		returnHTML += '</div>\n';
+		// horizontalLine
+		returnHTML += '<div class="horizontalLine"></div>'
+	returnHTML += '</article>\n';
+	return returnHTML;
+};
 
-							html += '<dateTime>' + article.timelineDate + '</dateTime>\n';
-							html += '<div class="dots">\n';
-								html += timelineDot + '\n';
-								html += '<div class="prevjump">'+arrowDot+jumpPrev+'</div> <div class="nextjump">'+arrowDot+jumpNext+'</div>\n'
-							html += '</div>\n';
-							html += '<div class="horizontalLine"></div>'
-						html += '</article>\n';
-					});
+function parsing_a_Section(section, sectionIndex) {
+	var returnHTML = '';
+	//sectionID
+	var sectionName_id = section.sectionName.replace(/\u002e/g, "-");
+	returnHTML += '<section id="' + sectionName_id + '">\n';
+		// section title
+		returnHTML += '<div class="sectionhead">\n<sectionhead>' + section.sectionName + '.</sectionhead>\n<div class="horizontalLine"></div></div>\n';
+		// article contents
+		$.each(section.articles, function(articleIndex, article) {
+			returnHTML += parsing_a_Article(article, sectionIndex, articleIndex)
+		});
+	returnHTML += '</section>\n';
+	return returnHTML;
+}
 
-					html += '</section>\n';
+function parsing_Nav(section, sectionIndex) {
+	var sectionName_id = section.sectionName.replace(/\u002e/g, "-");
+	var returnHTML = '<li><a href="#' + sectionName_id + '" class="timeJump">' + section.sectionName + '.</a></li>\n';
+
+	return returnHTML;
+};
+
+
+function getSection_recursive(sectionDataURLArray, sectionIndex) {
+	if (sectionDataURLArray.length <= 0) {
+		$('#navTime').append(navOutro);
+		$.holdReady( false );
+	}
+	else {
+		$.each(hashtag_position, function(tagIndex, tag) {
+			tag.push(new Array(0));
+		});
+		var sectionDataURL = sectionDataURLArray.shift() + '?r=' + randomString(32);
+		var section = $.getJSON(sectionDataURL, function(d) {
+			console.log("data loading success: "+sectionDataURL);
+				}).fail( function(d, textStatus, error) {
+						console.error("getJSON failed, status: " + textStatus + ", error: " + error);
+				}).done( function(section) {
+							console.log(section.sectionName);
+					$('#timeline #Outro').before(parsing_a_Section(section, sectionIndex));
+					$('#navTime').append(parsing_Nav(section, sectionIndex));
+					getSection_recursive(sectionDataURLArray, sectionIndex+1);
 				});
-
-				$('#timeline #Intro').after(html);
-
-				html = '';
-				html += '<ul class="nav" id="navTime">\n';
-				html += '<li><a href="#Intro" class="timeJump">Intro</a></li>\n';
-				$.each(data, function(sectionIndex, section) {
-					var sectionName_id = section.sectionName.replace(/\u002e/g, "-");
-					html += '<li><a href="#' + sectionName_id + '" class="timeJump">' + section.sectionName + '.</a></li>\n';
-				});
-				html += '<li><a href="#Outro" class="timeJump">400.</a></li>\n';
-				html += '</ul>\n';
-
-				$('#timeline').after(html);
-
-				$.holdReady( false );
-			});
+	}
+}
