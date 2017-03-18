@@ -22,8 +22,8 @@
 기여하시려면 GitHub 계정을 만드시고 둘 중 더 자신 있는 방법으로 참여해 주세요.
 
 1. **자료(타임라인)** 개선
-  * [data/Misogyny_timeline.json](https://github.com/yuptogun/misogyny-timeline/blob/master/data/Misogyny_data.json) 파일을 클릭합니다.
-  * 연필 아이콘을 눌러서 나오는 입력칸에 원하는 대로 수정합니다.
+  * [data/sections](https://github.com/yuptogun/misogyny-timeline/blob/master/data/sections) 폴더를 클릭합니다.
+  * 해당 년도의 json 파일을 클릭한 후, 연필 아이콘을 눌러서 나오는 입력칸에 원하는 대로 수정합니다.
   * Commit changes 칸에는 수정 내역 요약과 수정 사유를 적어 주세요.
   * Commit changes 버튼을 눌러 수정 내역 반영을 요청하세요.
   * 관리자들이 합당한 사유라고 판단하면 승인합니다.
