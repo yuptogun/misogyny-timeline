@@ -8,7 +8,8 @@
 - 대한민국 역사상 여성이 겪은 혐오, 차별, 피해 등을 json 데이터로 구조화한 다음 사용자단에서 파싱해서 타임라인 형태로 시각화한 아카이브입니다.
 - 이 저장소는 기본적으로 '이 아카이브가 이렇게 구현되었다'라는 것을 공개하고 함께 개선하기 위한 것입니다.
 - 실제 서비스에는 다음 소스들만이 live로 사용되고 나머지는 [Twenties' Timeline](http://20timeline.com/) 서버에서 별도로 관리 및 작동됩니다.
-	- data/Misogyny-timeline.json
+	- js/dataParsing.js
+   - data/ 아래의 모든 json
 
 
 ## License
@@ -18,14 +19,14 @@
 
 ## How To Contribute
 
-여성혐오의 역사에 종언을 고하는 그날까지! 함께 추적해 나갑시다.  
+여성혐오의 역사에 종언을 고하는 그날까지 함께 추적해 나갑시다.
 기여하시려면 GitHub 계정을 만드시고 둘 중 더 자신 있는 방법으로 참여해 주세요.
 
-1. **자료(타임라인)** 개선 
-   * [data/sections](https://github.com/yuptogun/misogyny-timeline/blob/master/data/sections) 폴더를 클릭합니다.
-   * 해당 년도의 json 파일을 클릭한 후, 연필 아이콘을 눌러서 나오는 입력칸에 원하는 대로 수정합니다. 만약 새로운 json 파일을 만들어야 할 경우, 새로 생성한 파일의 경로와 이름을 [data/filename_array.json](https://github.com/yuptogun/misogyny-timeline/blob/master/data/filename_array.json)에 입력해야 합니다.
-   * Commit changes 칸에는 수정 내역 요약과 수정 사유를 적어 주세요.
-   * Commit changes 버튼을 눌러 수정 내역 반영을 요청하세요.
+1. **자료(타임라인)** 개선
+   * [data/sections](https://github.com/yuptogun/misogyny-timeline/blob/master/data/sections) 폴더로 들어갑니다.
+   * 기존 자료의 수정: 해당 자료가 들어 있는 json 파일을 클릭한 후, 연필 아이콘을 눌러서 나오는 입력칸에 원하는 대로 수정합니다.
+   * 새로운 자료의 추가: 기존 json 파일의 형식을 정확히 지켜서 새 파일을 생성해 업로드한 다음, [data/filename_array.json](https://github.com/yuptogun/misogyny-timeline/blob/master/data/filename_array.json)의 기존 json 파일 주소를 참조해서 새 파일의 주소를 추가합니다.
+   * 수정 내역 요약과 수정 사유를 적어 주시고 Commit changes 버튼을 누르면 최종적으로 수정 요청이 전송됩니다.
    * 관리자들이 합당한 사유라고 판단하면 승인합니다.
    * 관리자들의 수정 내역 반영 이후 1~3분 뒤부터 수정된 타임라인 내용이 RawGit에 의해 배포됩니다.
 
