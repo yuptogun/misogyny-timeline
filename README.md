@@ -23,9 +23,7 @@
 
 1. **자료(타임라인)** 개선 
    * [data/sections](https://github.com/yuptogun/misogyny-timeline/blob/master/data/sections) 폴더를 클릭합니다.
-
    * 해당 년도의 json 파일을 클릭한 후, 연필 아이콘을 눌러서 나오는 입력칸에 원하는 대로 수정합니다. 만약 새로운 json 파일을 만들어야 할 경우, 새로 생성한 파일의 경로와 이름을 [data/filename_array.json](https://github.com/yuptogun/misogyny-timeline/blob/master/data/filename_array.json)에 입력해야 합니다.
-
    * Commit changes 칸에는 수정 내역 요약과 수정 사유를 적어 주세요.
    * Commit changes 버튼을 눌러 수정 내역 반영을 요청하세요.
    * 관리자들이 합당한 사유라고 판단하면 승인합니다.
