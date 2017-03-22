@@ -51,7 +51,7 @@ img, img a {
 		#title_text {
 			position: relative;
 			height: auto;
-			margin-top: 1.3vmin; /* padding-bottom must be equal to (#timelineDot's height - #intro_scroll's font-size)/2 */
+			margin-top: 1.3vmin; /* padding-bottom must be equal to (.timelineDot's height - #intro_scroll's font-size)/2 */
 			margin-bottom: 0px;
 		}
 
@@ -125,17 +125,6 @@ img, img a {
 						color:#323232;
 					}
 
-					article p notice {
-						font-size:.9rem;
-						color:#d01f3e;
-					}
-
-					article p quote {
-						font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif;
-						font-size: 0.85rem;
-						font-weight: 300;
-					}
-
 								#essay_intro {
 									padding-right: 7rem;
 									position:relative;
@@ -148,12 +137,7 @@ img, img a {
 									width: 15.6rem;
 								}
 
-										.hashtag_line {
-/*											margin: 0px 0px 0px -2rem; /* margin-left must be equal to (-)padding-left of '.tag_intro' */
-/*											padding-left: 2rem; /* margin-left must be equal to padding-left of '.tag_intro' */
-											display: flex;
-											flex-direction: row;
-										}
+
 
 								#essay_outro {
 									padding-right: 10rem;
@@ -176,13 +160,13 @@ img, img a {
 									column-gap: 2rem;
 								}
 
-								#Outro #timelineDot {
+								#Outro .timelineDot {
 									visibility: hidden;
 								}
 
 					div.sectionhead {
 /*						width: 8rem;
-						height: 27.6vmin;  /* width must be equal to .dots's margin-bottom + #timelineDot's height. */
+						height: 27.6vmin;  /* width must be equal to .dots's margin-bottom + .timelineDot's height. */
 						width: 12rem; /* equal to (sectionhead's font-size * line-height) */
 						padding-left: 6rem;
 
@@ -232,24 +216,60 @@ img, img a {
 						z-index: 1;
 					}
 
-					.background {
-						list-style-type: none;
-						position: absolute;
-						left: 0px;
-						top: 0px;
-						width: 100%;
-						height: 100%;
+					.hashtag_flexbox {
 						margin: 0px 0px 0px 0px;
 						padding: 0px 0px 0px 0px;
-						z-index: -1;
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						width: 8rem;
+					}
+					#tag_intro_hashtagFlexbox {
+						width: 16rem;
+					}
+
+					hashtag {
+						position: relative;
+						bottom: 0.8rem;
+						margin-bottom: 0.6rem;
+						margin-right: 1rem;
+						z-index: 1;
+
+						height: 1.5rem;
+						width: 7rem;
 						flex-shrink: 0;
 					}
-								.background li {
+
+					hashtag.selected {
+						z-index: -1;
+					}
+
+								hashtag div.button {
+									position: relative;
+									height: 100%;
+									width: 100%;
+									cursor: pointer;
+								}
+
+											hashtag div.button text {
+												position: absolute;
+												padding-left: 0.3rem;
+												padding-top: 0.1rem;
+
+												font-weight: 500;
+												font-size: 0.8rem;
+												color: #000000;
+											}
+
+								hashtag div.background {
 									position: absolute;
-									width: 1px;
-									height: 1px;
-									top: 0px;
 									left: 0px;
+									top: 0px;
+									width: 100%;
+									height: 100%;
+									margin: 0px 0px 0px 0px;
+									padding: 0px 0px 0px 0px;
+									flex-shrink: 0;
 
 									transform-origin: top left;
 									transition-property: transform;
@@ -257,8 +277,20 @@ img, img a {
 									transition-delay: 0s;
 									transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
 								}
+/*											hashtag div.background.midStep {
+												position: absolute;
+												width: 1px;
+												height: 1px;
+												top: 0px;
+												left: 0px;
 
-
+												transform-origin: top left;
+												transition-property: transform;
+												transition-duration: 0.55s;
+												transition-delay: 0s;
+												transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
+/*											}
+*/
 		      .essay_1 {
 		      	position:relative;
 						width: 15rem;
@@ -282,7 +314,7 @@ img, img a {
 		      h1 {
 						width: 15rem;
 						text-align: left;
-						/*z-index: 1;*/
+						z-index: 1;
 						flex-shrink: 0;
 
 						font-weight: 700;
@@ -293,12 +325,24 @@ img, img a {
 		      	text-decoration:none;
 		      }
 
+					p quote {
+						font-family: 'Nanum Myeongjo', 'Noto Sans KR', sans-serif;
+						font-size: 0.85rem;
+						font-weight: 300;
+					}
+
+					p notice {
+						font-family: 'Noto Sans KR', sans-serif;
+						font-size: .9rem;
+						color: #d01f3e;
+					}
+
 					dateTime {
 						text-align: left;
 /*						margin-top: 0rem;
 */						margin-bottom: 1.5rem;
 						width: 15rem;
-						/*z-index: 1;*/
+						z-index: 1;
 						flex-shrink: 0;
 
 						font-weight: 500;
@@ -318,7 +362,7 @@ img, img a {
 						z-index: 1;
 					}
 
-								#timelineDot {
+								.timelineDot {
 									position: absolute;
 /*									left: 0px;
 									bottom: 0px;
@@ -328,14 +372,14 @@ img, img a {
 									background-color: transparent;
 								}
 
-								#timelineDot svg {
+								.timelineDot svg {
 								  position: absolute;
 									overflow: visible;
 /*								  top: 0;
 								  left: 0;
 */								}
 
-								#timelineDot svg circle {
+								.timelineDot svg circle {
 									fill: #31454e;
 									/* cx, cy and r are defined in dataParsing.js. */
 								}
@@ -395,7 +439,7 @@ img, img a {
 									}
 								}
 
-								#arrowDot {
+								.arrowDot {
 									position: absolute;
 									top: 0.1vmin; /* top & left must be equal to half of width difference between .prevjump's img & #arrowDot. */
 									left: 0.1vmin;
@@ -407,7 +451,7 @@ img, img a {
 		              transition-duration: 0.55s;
 		              transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); /* == 'easeOutExpo'. https://easings.net/ko#easeInOutExpo */
 								}
-								#arrowDot svg{
+								.arrowDot svg{
 									height: 100%;
 									width: 100%;
 								}
@@ -416,7 +460,7 @@ img, img a {
 		.horizontalLine {
 			position: absolute;
 			left: 0px;
-			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (#timelineDot's outerHeight)/2. */
+			bottom: 24.8vmin;  /* bottom must be equal to .dots's margin-bottom + (.timelineDot's outerHeight)/2. */
 			flex-shrink: 0;
 
 			height: 1.4vmin;
@@ -486,77 +530,56 @@ img, img a {
 
 
 
-hashtag {
-	position: relative;
-	bottom: 0.8rem;
-	padding-left: 0.3rem;
-	margin-bottom: 0.6rem;
-	margin-right: 1rem;
-	/*z-index: 1;*/
 
-	height: 1.5rem;
-	width: 7rem;
-	flex-shrink: 0;
-	cursor: pointer;
-}
-
-			hashtag text {
-				position: absolute;
-				padding-top: 0.1rem;
-
-				font-weight: 500;
-				font-size: 0.8rem;
-				color: #000000;
-			}
 
 .none {
 	background-color: transparent;
 }
-.authority {
+.authority, .authority div {
 	background-color: #ffcccc;
 }
-.japan {
+.japan, .japan div {
 	background-color: #ff9999;
 }
-.rape {
+.rape, .rape div {
 	background-color: #ff9933;
 }
-.crime {
+.crime, .crime div {
 	background-color: #ffcc33;
 }
-.law {
+.law, .law div {
 	background-color: #ffff99;
 }
-.policy {
+.policy, .policy div {
 	background-color: #cccc99;
 }
-.politics {
+.politics, .politics div {
 	background-color: #99cc66;
 }
-.party {
+.party, .party div {
 	background-color: #66cc99;
 }
-.labour {
+.labour, .labour div {
 	background-color: #99ff99;
 }
-.movement {
+.movement, .movement div {
 	background-color: #99cccc;
 }
-.media {
+.media, .media div {
 	background-color: #66cccc;
 }
-.online {
+.online, .online div {
 	background-color: #66ccff;
 }
-.speech {
+.speech, .speech div {
 	background-color: #99ccff;
 }
-.culture {
+.culture, .culture div {
 	background-color: #9999ff;
 }
-.lovers {
+.lovers, .lovers div {
 	background-color: #cc99ff;
 }
-.abortion {
+.abortion, .abortion div {
 	background-color: #ff99ff;
 }

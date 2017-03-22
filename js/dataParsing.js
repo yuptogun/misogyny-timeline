@@ -39,8 +39,8 @@ var hashtag_position = {
 	'abortion': [[1]]
 };
 
-var timelineDot = '<div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
-var arrowDot = '<div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
+var timelineDot = '<div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>';
+var arrowDot = '<div class="arrowDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="5" cy="5" r="5"></circle></svg> </div>';
 var jumpPrev = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpPrev.svg">';
 var jumpNext = '<img src="http://20timeline.com/oversmart/public/misogyny-timeline/jumpNext.svg">';
 
@@ -72,11 +72,16 @@ function parsing_a_Hashtag(hashtag, decodedIndex, articleIndex) {
 	var returnHTML = '';
 	var hashtagClass = hashtag_KtoE[hashtag];
 	hashtag_position[hashtagClass][decodedIndex].push(articleIndex);
-	returnHTML += '<hashtag class="' + hashtagClass + '"><text>'+ hashtag +'</text></hashtag>\n';
+	returnHTML += '<hashtag class="' + hashtagClass + '">\n';
+		// background
+		returnHTML += '<div class="background"></div>\n';
+		// hashtag button
+		returnHTML += '<div class="button"><text>'+ hashtag +'</text></div>\n';
+	returnHTML += '</hashtag>\n';
 	return returnHTML;
 };
 function parsingHashtag_s(article, sectionIndex, articleIndex) {
-	var returnHTML = '';
+	var returnHTML = '<div class="hashtag_flexbox">\n';
 	if (article.hashtag_1 != "") {
 		returnHTML += parsing_a_Hashtag(article.hashtag_1, sectionIndex+1, articleIndex);
 		if (article.hashtag_2 != "") {
@@ -84,6 +89,7 @@ function parsingHashtag_s(article, sectionIndex, articleIndex) {
 			if (article.hashtag_3 != "") {
 				returnHTML += parsing_a_Hashtag(article.hashtag_3, sectionIndex+1, articleIndex);
 	}}}
+	returnHTML += '</div>\n';
 	return returnHTML;
 };
 

@@ -54,47 +54,77 @@
         </p>
         <dateTime>Intro: 2017.</dateTime>
         <div class="dots">
-          <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
+          <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
         <div class="horizontalLine"></div>
       </article>
 
       <article id="tag_intro">
-        <ul class="background">
-          <li id="none"></li>
-          <li id="none"></li>
-        </ul>
-        <div class="hashtag_line">
-          <hashtag id="authority"><text>권력/전쟁범죄</text></hashtag>
-          <hashtag id="labour"><text>노동문제</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="japan"><text>일본 제국</text></hashtag>
-          <hashtag id="movement"><text>각종 사회운동</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="rape"><text>강간/강제추행</text></hashtag>
-          <hashtag id="media"><text>언론매체</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="crime"><text>범죄</text></hashtag>
-          <hashtag id="online"><text>인터넷/소셜미디어</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="law"><text>수사/판결</text></hashtag>
-          <hashtag id="speech"><text>발언</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="policy"><text>법령</text></hashtag>
-          <hashtag id="culture"><text>예술/대중문화</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="politics"><text>정치</text></hashtag>
-          <hashtag id="lovers"><text>연인, 가족관계</text></hashtag>
-        </div>
-        <div class="hashtag_line">
-          <hashtag id="party"><text>정당</text></hashtag>
-          <hashtag id="abortion"><text>태아, 임신중절</text></hashtag>
+        <div class="hashtag_flexbox" id="tag_intro_hashtagFlexbox">
+          <hashtag class="authority">
+            <div class="background"></div>
+            <div class="button"><text>권력/전쟁범죄</text></div>
+          </hashtag>
+          <hashtag class="labour">
+            <div class="background"></div>
+            <div class="button"><text>노동문제</text></div>
+          </hashtag>
+          <hashtag class="japan">
+            <div class="background"></div>
+            <div class="button"><text>일본 제국</text></div>
+          </hashtag>
+          <hashtag class="movement">
+            <div class="background"></div>
+            <div class="button"><text>각종 사회운동</text></div>
+          </hashtag>
+          <hashtag class="rape">
+            <div class="background"></div>
+            <div class="button"><text>강간/강제추행</text></div>
+          </hashtag>
+          <hashtag class="media">
+            <div class="background"></div>
+            <div class="button"><text>언론매체</text></div>
+          </hashtag>
+          <hashtag class="crime">
+            <div class="background"></div>
+            <div class="button"><text>범죄</text></div>
+          </hashtag>
+          <hashtag class="online">
+            <div class="background"></div>
+            <div class="button"><text>인터넷/소셜미디어</text></div>
+          </hashtag>
+          <hashtag class="law">
+            <div class="background"></div>
+            <div class="button"><text>수사/판결</text></div>
+          </hashtag>
+          <hashtag class="speech">
+            <div class="background"></div>
+            <div class="button"><text>발언</text></div>
+          </hashtag>
+          <hashtag class="policy">
+            <div class="background"></div>
+            <div class="button"><text>법령</text></div>
+          </hashtag>
+          <hashtag class="culture">
+            <div class="background"></div>
+            <div class="button"><text>예술/대중문화</text></div>
+          </hashtag>
+          <hashtag class="politics">
+            <div class="background"></div>
+            <div class="button"><text>정치</text></div>
+          </hashtag>
+          <hashtag class="lovers">
+            <div class="background"></div>
+            <div class="button"><text>연인, 가족관계</text></div>
+          </hashtag>
+          <hashtag class="party">
+            <div class="background"></div>
+            <div class="button"><text>정당</text></div>
+          </hashtag>
+          <hashtag class="abortion">
+            <div class="background"></div>
+            <div class="button"><text>태아, 임신중절</text></div>
+          </hashtag>
         </div>
 
         <p>해시태그를 클릭하면 해당 내용의 단락이 하이라이트되고 화살표가 나타납니다.
@@ -103,13 +133,13 @@
         </p>
         <dateTime>About hashtag</dateTime>
         <div class="dots">
-          <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
+          <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
           <div class="prevjump">
-            <div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>
+            <div class="arrowDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="5" cy="5" r="5"></circle></svg> </div>
             <img src="assets/img/jumpPrev.svg">
           </div>
           <div class="nextjump">
-            <div id="arrowDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="5" cy="5" r="5"></circle></svg> </div>
+            <div class="arrowDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="5" cy="5" r="5"></circle></svg> </div>
             <img src="assets/img/jumpNext.svg">
           </div>
         </div>
@@ -129,7 +159,7 @@
         </p>
         <dateTime><br></dateTime>
         <div class="dots">
-          <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
+          <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
         <div class="horizontalLine"></div>
       </article>
@@ -142,7 +172,7 @@
         </p>
         <dateTime>20's Timeline</dateTime>
         <div class="dots">
-          <div id="timelineDot"> <svg viewBox="0 0 10 10"><circle id="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
+          <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
         <div class="horizontalLine"></div>
       </article>

@@ -4,21 +4,21 @@
 var clickedTagClass = undefined;
 var prevTagClass = undefined;
 $(document).ready(function(){
-  $('#timeline').on('click', 'hashtag', function(event) {
+  $('#timeline').on('click', 'hashtag div.button', function(event) {
     event.preventDefault();
 
     // if some other '.background' is animating, clicking is rejected.
-    if ($('.background li').is(':animated')) {
+    if ($('hashtag div.background').is(':animated')) {
           return 0;
       }
     console.log("click");
 
-    var tag_width = $(this).innerWidth();
-    var tag_height = $(this).innerHeight();
-    var article_height = $('#timeline').innerHeight();
+    var button_width = $(this).innerWidth();
+    var button_height = $(this).innerHeight();
+    var article_height_ratio = $('#timeline').innerHeight()/button_height;
 
     prevTagClass = clickedTagClass;
-    clickedTagClass = $(this).attr("class");
+    clickedTagClass = $(this).parent().attr("class");
 
     // when a hashtag is clicked, at first, expended background will be fold.
     if (prevTagClass != undefined) {
@@ -28,37 +28,23 @@ $(document).ready(function(){
             var article = $('article', sectionID)[articleIndex];
             var tag = $('hashtag.'+prevTagClass, article)[0];
 
-            var article_width = $(article).innerWidth()+2;
+            var article_width_ratio = ($(article).innerWidth()+2)/button_width;
             var tag_top = $(tag).position().top;
             var tag_left = $(tag).position().left;
 
             // folding background.
-            $('.prevjump #arrowDot, .nextjump #arrowDot', article).css('fill', '#31454e');
+            $('.prevjump .arrowDot, .nextjump .arrowDot', article).css('fill', '#31454e');
             $('.prevjump, .nextjump', article).removeClass("tagSelected");
-/*
-            $('.background li#'+prevTagClass, article)
-            .css({
-              'z-index': -1,
-              transform: 'translate(0px, '+tag_top+'px) scale('+article_width+', '+tag_height+')'
-            });
 
-            $('.background', article).one('transitionend webkitTransitionEnd', 'li#'+prevTagClass, function() {
-              $(this).css({
-                  transform: 'translate('+tag_left+'px, '+tag_top+'px) scale('+tag_width+', '+tag_height+') '
+            $('hashtag.'+prevTagClass+' div.background', article)
+            .css({ transform: 'translate(-'+tag_left+'px, 0px) scale('+article_width_ratio+', 1) ' })
+            .one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
+//              $(this).parent().removeClass('selected');
+              $(this).parent().css('z-index', '0');
+              $(this).css('transform', '')
+              .one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
+                $(this).parent().removeAttr('style');
               });
-
-              $('.background', article).one('transitionend webkitTransitionEnd', 'li#'+prevTagClass, function() {
-                $(this).attr('class', 'none').css('transform', '');
-              });
-            });
-    */      $('.background li.'+prevTagClass, article)
-            .css({
-              'z-index': -1,
-              transform: 'translate('+tag_left+'px, '+tag_top+'px) scale('+tag_width+', '+tag_height+') '
-            })
-            .delay(550)
-            .queue(function() {
-              $(this).attr('class', 'none').css('transform', '').dequeue();
             });
         });
       });
@@ -67,7 +53,7 @@ $(document).ready(function(){
     }
 
     // if you clicked the hashtag already chosen, whole job will be finished as it dis-selects the hashtag.
-    if (prevTagClass == $(this).attr("class")) {
+    if (prevTagClass == clickedTagClass) {
       clickedTagClass = undefined;
       return 0;
     }
@@ -77,35 +63,25 @@ $(document).ready(function(){
       var sectionID = $('#timeline section')[sectionIndex];
       $.each(s, function(aIndex, articleIndex) {
           var article = $('article', sectionID)[articleIndex];
-          var tag = $('hashtag.'+clickedTagClass, article)[0];
+          var tag = $('hashtag.'+ clickedTagClass , article)[0];
 
-          var article_width = $(article).innerWidth()+2;
+          var article_width_ratio = ($(article).innerWidth()+2)/button_width;
           var tag_top = $(tag).position().top;
           var tag_left = $(tag).position().left;
 
-          $('.background li.none:first', article)
-          .attr('class', clickedTagClass)
-          .css({
-            transform: 'translate('+tag_left+'px, '+tag_top+'px) scale('+tag_width+', '+tag_height+')',
-            'transition-duration': '0s'
+          $('hashtag.'+clickedTagClass, article)
+          .css('z-index', '0')
+          .children("div.background").css({
+            transform: 'translate(-'+tag_left+'px, 0px) scale('+article_width_ratio+', 1) ',
           })
-          .delay(1)
-          .queue(function() {
-            $(this).css({
-                'z-index': 0,
-                transform: 'translate(0, '+tag_top+'px) scale('+article_width+', '+tag_height+') ',
-                'transition-duration': ''
-            })
-            .dequeue();
-          })
-          .delay(550)
-          .queue(function() {
-            $('.prevjump #arrowDot, .nextjump #arrowDot', article).css('fill', $('.'+clickedTagClass).css('background-color'));
+          .one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
+            $('.prevjump .arrowDot, .nextjump .arrowDot', article).css('fill', $('.'+clickedTagClass).css('background-color'));
             $('.prevjump, .nextjump', article).addClass("tagSelected");
+//            $(this).parent().addClass('selected');
+            $(this).parent().css('z-index', '-1');
             $(this).css({
-                transform: 'translate(0px, 0px) scale('+article_width+ ', '+article_height+')'
-              })
-              .dequeue();
+                transform: 'translate(-'+tag_left+'px, -'+tag_top+'0px) scale('+article_width_ratio+ ', '+article_height_ratio+')'
+              });
           });
 
         });
