@@ -26,28 +26,14 @@ $(document).ready(function(){
 
     // handles .nav button's opacity based on current scrollX.
 var section_position = [];
+var sectionIndex_viewing = 0;
+var sectionIndex_max = 0;
 
 $(document).ready(function(){
-  var sectionIndex_viewing = 0;
-  var sectionIndex_max = 0;
-  $.each($('section'), function(sectionIndex, section) {
-    section_position.push($(section).offset().left);
-    sectionIndex_max = sectionIndex;
-    if (section_position[sectionIndex] < window.pageXOffset + $(window).width()/2) {
-      sectionIndex_viewing = sectionIndex;
-    }
-  });
-  $($('.nav li a.timeJump')[sectionIndex_viewing]).css('opacity', 1.0);
+  reset_section_position();
 
   $(window).resize(function() {
-    $.each($('section'), function(sectionIndex, section) {
-      section_position.push($(section).offset().left);
-      sectionIndex_max = sectionIndex;
-      if (section_position[sectionIndex] < window.pageXOffset + $(window).width()/2) {
-        sectionIndex_viewing = sectionIndex;
-      }
-    });
-    $($('.nav li a.timeJump')[sectionIndex_viewing]).css('opacity', 1.0);
+    reset_section_position();
   });
 
   $(window).scroll(function(event){
@@ -68,65 +54,59 @@ $(document).ready(function(){
   });
 });
 
+function reset_section_position() {
+  section_position = [];
+  $.each($('section'), function(sectionIndex, section) {
+    section_position.push($(section).offset().left);
+    sectionIndex_max = sectionIndex;
+    if (section_position[sectionIndex] < window.pageXOffset + $(window).width()/2) {
+      sectionIndex_viewing = sectionIndex;
+    }
+  });
+  $($('.nav li a.timeJump')[sectionIndex_viewing]).css('opacity', 1.0);
+}
+
 
 // handles easing to next place of 'chosen hashtag' via < > buttons
 	//get the coordinates of all essay chunks and put them into an array
-	var destinations = {
-    'authority': [],
-  	'japan': [],
-  	'rape': [],
-  	'crime': [],
-  	'law': [],
-  	'policy': [],
-  	'politics': [],
-  	'party': [],
-    'labour': [],
-  	'movement': [],
-  	'media': [],
-  	'online': [],
-  	'speech': [],
-  	'culture': [],
-  	'lovers': [],
-  	'abortion': []
-  };
+var destinations = initialize_destinations();
 
-
-$(document).ready(function(){
-
+function reset_hashtag_position() {
+  destinations = initialize_destinations();
   $('hashtag').each(function(){
     var tagClass = $(this).attr('class');
     var articleDist = $(this).offset().left;
     destinations[tagClass].push(articleDist);
   });
+}
+function initialize_destinations() {
+  return {
+    'authority': [],
+    'japan': [],
+    'rape': [],
+    'crime': [],
+    'law': [],
+    'policy': [],
+    'politics': [],
+    'party': [],
+    'labour': [],
+    'movement': [],
+    'media': [],
+    'online': [],
+    'speech': [],
+    'culture': [],
+    'lovers': [],
+    'abortion': []
+  };
+}
+
+$(document).ready(function(){
+  reset_hashtag_position();
 
   $(window).resize(function(event){
     console.log("resize");
-    destinations = {
-      'authority': [],
-    	'japan': [],
-    	'rape': [],
-    	'crime': [],
-    	'law': [],
-    	'policy': [],
-    	'politics': [],
-    	'party': [],
-      'labour': [],
-    	'movement': [],
-    	'media': [],
-    	'online': [],
-    	'speech': [],
-    	'culture': [],
-    	'lovers': [],
-    	'abortion': []
-    };
-
-    $('hashtag').each(function(){
-      var tagClass = $(this).attr('class');
-      var articleDist = $(this).offset().left;
-      destinations[tagClass].push(articleDist);
-    });
+    reset_hashtag_position();
   });
-
 
 	//Attach it to the next button
   $('#timeline').on('click', '.dots .nextjump', function(event){
