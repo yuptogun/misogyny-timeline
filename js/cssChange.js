@@ -11,18 +11,15 @@ $(document).ready(function(){
     changeCSS_1();
 
     //resize background: fit on screen and section
-    var article_height = $('#timeline').innerHeight();
+    window_height_resize = $(window).innerHeight();
 
     if (clickedTagClass != undefined) {
-      $.each(hashtag_position[clickedTagClass], function(sectionIndex, s) {
-        var sectionID = $('#timeline section')[sectionIndex];
-        $.each(s, function(aIndex, articleIndex) {
-            var article = $('article', sectionID)[articleIndex];
-            var article_width = $(article).innerWidth()+2;
-
-            $('.background li.'+clickedTagClass, article).css({
-              transform: 'translate(0px, 0px) scale('+article_width+ ', '+article_height+')'
-            });
+      $.each($('hashtag.'+clickedTagClass+' div.background'), function(index, background) {
+        var button = $(background).parent();
+        $(background).css({
+          top: -$(button).position().top,
+          height: window_height_resize,
+          'transition-duration': '0s'
         });
       });
     }

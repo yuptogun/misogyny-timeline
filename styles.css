@@ -272,7 +272,7 @@ img, img a {
 									flex-shrink: 0;
 
 									transform-origin: top left;
-									transition-property: transform;
+									transition-property: transform top left width height;
 									transition-duration: 0.55s;
 									transition-delay: 0s;
 									transition-timing-function: cubic-bezier(1, 0, 0, 1); /* == 'easeInOutExpo'. https://easings.net/ko#easeInOutExpo */
