@@ -238,6 +238,7 @@ img, img a {
 						flex-direction: row;
 						flex-wrap: wrap;
 						width: 8rem;
+						z-index: -1;
 					}
 					#tag_intro_hashtagFlexbox {
 						width: 16rem;
