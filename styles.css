@@ -26,15 +26,6 @@ body {
 	overflow-y: hidden;
 }
 
-a, a:visited {
-	text-decoration: none;
-	color: #d01f3e;
-	border-bottom: 1px dotted;
-}
-a:focus, a:hover {
-	color: #444;
-}
-
 img, img a {
 	border: none;
 }
@@ -136,6 +127,17 @@ img, img a {
 						font-size:.9rem;
 						font-weight: 400;
 						color:#323232;
+					}
+
+					article p a,
+					article p a:visited {
+						text-decoration: none;
+						color: #d01f3e;
+						border-bottom: 1px dotted;
+					}
+					article p a:focus,
+					article p a:hover {
+						color: #444;
 					}
 
 								#essay_intro {
