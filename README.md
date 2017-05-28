@@ -6,18 +6,18 @@
 ## Overview
 
 - 대한민국 역사상 여성이 겪은 혐오, 차별, 피해 등을 json 데이터로 구조화한 다음 사용자단에서 파싱해서 타임라인 형태로 시각화하는 아카이브입니다.
-- 루트 내 `misogyny_timeline.php`와 `assets/img` 디렉토리 내 이미지들을 제외한 모든 파일은 이 저장소에서 직접 [Rawgit](https://rawgit.com/)을 통해 배포됩니다. 무슨 뜻이냐면... **여성혐오 타임라인은 여러분이 업데이트하는 그대로 서비스가 된다는 뜻이죠!!!**
+- 루트 내 `misogyny_timeline.php`와 `assets/img` 디렉토리 내 이미지들을 제외한 모든 파일은 이 저장소에서 직접 <a href="https://rawgit.com/" target="_blank">Rawgit</a>을 통해 배포됩니다. 무슨 뜻이냐면... **여성혐오 타임라인은 여러분이 업데이트하는 그대로 서비스가 된다는 뜻이죠!!!**
 
 
 ## License
 
-- 별다른 특이사항이 없는 한 이 소스는 [CCL by-nc-sa 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)을 따릅니다. 영리 목적으로 쓰실 수 없으며, 원저작자가 [조현익](https://www.behance.net/comjoy91)임을 명시하셔야 하고, 이 조건을 지키는 한 수정해 활용하실 수 있습니다.
+- 별다른 특이사항이 없는 한 이 소스는 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CCL by-nc-sa 4.0</a>을 따릅니다. 영리 목적으로 쓰실 수 없으며, 원저작자가 <a href="https://www.behance.net/comjoy91" target="_blank">조현익</a>임을 명시하셔야 하고, 이 조건을 지키는 한 수정해 활용하실 수 있습니다.
 
 
 ## How To Contribute
 
 여성혐오의 역사에 종언을 고하는 그날까지 함께 추적해 나갑시다.
-기여하시려면 GitHub 계정을 만드시고 셋 중 더 자신 있는 방법으로 참여해 주세요.
+기여하시려면 GitHub 계정을 만드시고 둘 중 더 자신 있는 방법으로 참여해 주세요.
 
 1. **자료(타임라인)** 개선
 	* [data/sections](https://github.com/yuptogun/misogyny-timeline/blob/master/data/sections) 폴더의 파일들을 수정합니다.
@@ -26,7 +26,7 @@
 	* 업데이트 내역 요약과 사유를 적어서 Commit하시면 됩니다.
 	* 관리자들이 업데이트를 확인하고 커밋을 승인하면, 1~3분쯤 뒤부터는 수정하신 타임라인 내용이 서비스에 자동 반영됩니다!
 
-2. **CSS / JS / PHP** 개선 
+2. **CSS / JS / PHP** 개선
 	* 이 저장소를 clone합니다.
 	* `misogyny_timeline.php` 파일을 최종 뷰로 기준 삼고 소스들을 수정합니다.
 	* 수정 내역 요약과 사유를 적어서 Commit & Pull Request 하시면 됩니다.
