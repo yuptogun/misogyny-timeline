@@ -26,6 +26,15 @@ body {
 	overflow-y: hidden;
 }
 
+a, a:visited {
+	text-decoration: none;
+	color: #d01f3e;
+	border-bottom: 1px dotted;
+}
+a:focus, a:hover {
+	color: #444;
+}
+
 img, img a {
 	border: none;
 }

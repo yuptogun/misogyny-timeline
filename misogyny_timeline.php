@@ -97,6 +97,7 @@ $app_rand = random_string('md5');
 
     <section id="Intro">
       <article id="essay_intro">
+        <div class="fb-like" data-href="http://20timeline.com/oversmart/misogyny-timeline" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
         <p id="intro_essay_bottom">
           2017년 설날이 막 지난 지금, 우리는 아주 전통적인 한국 역사 이야기를 다루려고 한다.
           <br>
