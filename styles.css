@@ -102,6 +102,10 @@ img, img a {
 			position:relative;
 		}
 
+					article ul.background {
+						list-style: none;
+					}
+
 					article p {
 						/* Chrome, Safari, Opera prefix */
 						-webkit-column-width: 15rem;

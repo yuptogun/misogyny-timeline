@@ -1,35 +1,90 @@
 <!doctype html>
 <html>
-
+<!-- Codeigniter code. LIVE MODE ONLY. Comment out all of the below if error occurs in your DEV env. -->
+<?php
+$app_name = '여성혐오 타임라인';
+$app_thumb = 'https://lh3.googleusercontent.com/DK4_Tf2KrTSleA6qUL7hHNrZaGUoxTtLsxQjUEcbufWdxe20BvVxLPZPgGxElhEl6QAD8OLPhy_XOI2bTgarGMACEG3RDuSC2c-96mAVTlPR6dHePB-jUIPbkFj66RWfSpzu9rdR';
+$app_description = '삼국시대부터 지금까지 이어져 온 역사, 한눈에 살펴보세요.';
+$app_author = '조현익';
+$app_author_email = 'comjoy91@20timeline.com';
+$app_rand = random_string('md5');
+?>
+<!-- Codeigniter code. LIVE MODE ONLY. Comment out all of the above if error occurs in your DEV env. -->
 <head>
+
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+  <!-- SEO tags. LIVE MODE ONLY. Comment out all of the below if error occurs in your DEV env. -->
+  <meta name="description" content="<?php echo $app_description; ?>" />
+  <meta name="author" content="<?php echo $app_author; ?>" />
+  <meta name="copyright" content="<?php echo $app_author_email; ?>" />
+  <meta name="application-name" content="<?php echo $app_name; ?>" />
+  <meta property="fb:app_id" content="606270752776182" />
+  <meta property="article:author" content="https://facebook.com/20timeline" />
+  <meta property="og:title" content="<?php echo $app_name; ?>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="<?php echo $app_thumb; ?>" />
+  <meta property="og:url" content="<?php echo current_url(); ?>" />
+  <meta property="og:description" content="<?php echo $app_description; ?>" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<?php echo $app_name; ?>" />
+  <meta name="twitter:description" content="<?php echo $app_description; ?>" />
+  <meta name="twitter:image" content="<?php echo $app_thumb; ?>" /> 
+  <meta name="twitter:creator" content="@20timeline">
+  <!-- SEO tags. LIVE MODE ONLY. Comment out all of the above if error occurs in your DEV env. -->
+
+
+
   <title id="pgtitle">여성혐오 타임라인 - 20's Timeline</title>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/yuptogun/misogyny-timeline/master/styles.css">
 
-  <!-- javascript? ???
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-15285055-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  <!--[if gt IE 7]>
+  <script>
+  'article aside footer header nav section time'.replace(/\w+/g,function(n){document.createElement(n)})
   </script>
-  -->
+  <![endif]-->
 
 </head>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51872136-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=606270752776182";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <body>
 
+  <div id="preloader">
+    <p>로딩중…</p>
+    <p>데이터가 커서 특정 모바일 환경이나 최초 접속 시 로딩 시간이 걸립니다. 잠시 기다려 주세요.</p>
+  </div>
+
   <header id="navblocker">
-    <img id="titlecard" src="assets/img/mainTitle-ko.svg">
+
+    <!-- LIVE MODE ONLY --><img id="titlecard" src="<?php echo site_url('public/misogyny-timeline/mainTitle-ko.svg'); ?>">
+    <!-- DEV MODE ONLY --><!-- img id="titlecard" src="assets/img/mainTitle-ko.svg" -->
+
     <div id="title_text">
       <p id="credit">기획, 집필, 디자인, 개발: 조현익<br>집필검수: 허자인<br>개발검수: 김어진</p>
       <p id="intro_scroll">오른쪽으로 이동하려면 →<br>마우스휠을 돌리세요.</p>
@@ -136,11 +191,13 @@
           <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
           <div class="prevjump">
             <div class="arrowDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="5" cy="5" r="5"></circle></svg> </div>
-            <img src="assets/img/jumpPrev.svg">
+            <!-- LIVE MODE ONLY --><img src="<?php echo site_url('public/misogyny-timeline/jumpPrev.svg'); ?>">
+            <!-- DEV MODE ONLY --><!-- img src="assets/img/jumpPrev.svg" -->
           </div>
           <div class="nextjump">
             <div class="arrowDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="5" cy="5" r="5"></circle></svg> </div>
-            <img src="assets/img/jumpNext.svg">
+            <!-- LIVE MODE ONLY --><img src="<?php echo site_url('public/misogyny-timeline/jumpNext.svg'); ?>">
+            <!-- DEV MODE ONLY --><!-- img src="assets/img/jumpNext.svg" -->
           </div>
         </div>
         <div class="horizontalLine"></div>
@@ -153,9 +210,8 @@
       <div class="sectionhead"><sectionhead>400.</sectionhead><div class="horizontalLine"></div></div>
       <article id="essay_outro">
         <p>
-          이 이전의 한국사 기록이 남아있지 않았기에, 우리는 더 알아낼 수 없었다.
-          <br> 그 이전의 인류는 어떠했을까? 요컨데, 모든 인류가 수렵과 채집으로 직접 식량을 조달했던 시기라던가, 아니면, 아기가 태어나는 데에 여성 뿐만 아니라 남성도 ‘무언가’ 기여한다는 점을 처음 발견하기 전이라던가.
-          <br> 참 궁금하다.
+          이 이전의 인류는 어떠했을까? 이를테면, 모든 인류가 수렵과 채집으로 직접 식량을 조달했던 시기라던가, 아니면, 아기가 태어나는 데에 여성뿐만 아니라 남성도 ‘무언가’ 기여한다는 점을 처음 발견하기 전이라던가.
+          <br>안타깝게도 이 이전의 한국사 기록이 남아있지 않았기에 우리는 더 들어가볼 수는 없었다. 그래도 한 가지는 분명히 알 수 있을 것 같다. 여성을 여성이라는 이유로 함부로 규정하고 판단하는 태도와 행위가, 여성혐오라고 부르는 바로 그것의 욕된 역사가, 이렇게나 구구히 이어져 왔다는 걸.
         </p>
         <dateTime><br></dateTime>
         <div class="dots">
@@ -166,11 +222,11 @@
 
       <article id="TTLPage">
         <p>
-          <a href="" target="_blank">20's Timeline 홈페이지로</a>
-          <br><a href="" target="_blank">20's Timeline Facebook</a>
-          <br><a href="" target="_blank">20's Timeline Email</a>
+          <a href="http://20timeline.com" target="_blank">20's Timeline 홈페이지로</a>
+          <br><a href="http://fb.com/20timeline" target="_blank">20's Timeline Facebook</a>
+          <br><a href="mailto:comjoy91@20timeline.com" target="_blank">개발자에게 이메일 보내기</a>
         </p>
-        <dateTime>20's Timeline</dateTime>
+        <!-- LIVE MODE ONLY --><dateTime>&copy; <?php echo date("Y"); ?>, 트웬티스 타임라인</dateTime>
         <div class="dots">
           <div class="timelineDot"> <svg viewBox="0 0 10 10"><circle class="dot" cx="4.7" cy="5" r="5"></circle></svg> </div>
         </div>
@@ -187,12 +243,17 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
       <script src="https://unpkg.com/jquery.requestanimationframe@0.2.2/dist/jquery.requestanimationframe.min.js"></script>
-      <script type="text/javascript" src="js/jquery.easing.1.3.js"> </script>
-      <script type="text/javascript" src="js/jquery.mousewheel.min.js"> </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"> </script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/mousewheel/3.1.11/jquery.mousewheel.min.js"> </script>
 
-      <script type="text/javascript" src="js/metaTag.js"> </script>
-      <script type="text/javascript" src="js/cssChange.js"> </script>
-      <script type="text/javascript" src="js/dataParsing.js"> </script>
-      <script type="text/javascript" src="js/tagClick.js"> </script>
-      <script type="text/javascript" src="js/scroll.js"> </script>
+      <script type="text/javascript" src="https://rawgit.com/yuptogun/misogyny-timeline/master/js/metaTag.js"> </script>
+      <script type="text/javascript" src="https://rawgit.com/yuptogun/misogyny-timeline/master/js/cssChange.js"> </script>
+      <script type="text/javascript" src="https://rawgit.com/yuptogun/misogyny-timeline/master/js/dataParsing.js"> </script>
+      <script type="text/javascript" src="https://rawgit.com/yuptogun/misogyny-timeline/master/js/tagClick.js"> </script>
+      <script type="text/javascript" src="https://rawgit.com/yuptogun/misogyny-timeline/master/js/scroll.js"> </script>
+      <script type="text/javascript">
+        $(window).load(function(){
+          $('#preloader').fadeOut();
+        });
+      </script>
 </html>
